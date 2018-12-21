@@ -17,6 +17,9 @@
     "url": "https://github.com/xxmi/xxmi-util/issues"
   },
   "homepage": "https://github.com/xxmi/xxmi-util#readme",
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "lodash": "^4.17.11"
   },

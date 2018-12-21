@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const IMAGE_TYPE = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png'];
+const IMAGE_TYPE = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png', '.png', '.jpg'];
 
 /**
  * 判断是否为图片类型

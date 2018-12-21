@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../dist/main.js"></script>
+    <script src="../lib/index.js"></script>
     <script>
-      import {foo} from './export1.js';
-
-      console.log(foo);
-      setTimeout(() => {
-        console.log(foo);
-
-      }, 1000);
+      console.log(image.isImage('.png')); // true
+      console.log(image.isImage('.acc')); // false
     </script>
 </head>
 <body>
-aaa
+测试
 </body>
 </html>
