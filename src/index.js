@@ -1,3 +1,3 @@
-import image from './image.js';
+import Image from './image.js';
 
-export {image};
+export {Image};

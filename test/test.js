@@ -1,4 +1,4 @@
-const {image} = require('../lib/index');
+const {Image} = require('../lib/index');
 
-console.log(image.isImage('.png')); // true
-console.log(image.isImage('.acc')); // false
+console.log(Image.isImage('.png')); // true
+console.log(Image.isImage('.acc')); // false
