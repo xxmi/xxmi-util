@@ -1,11 +1,15 @@
 {
   "name": "xxmi-util",
-  "version": "1.0.5",
+  "version": "1.0.16",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config build/webpack.config.js"
+    "build-lib": "webpack --config build/webpack.config.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target examples-lib --name xxmi-util-demo --dest examples-lib src/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +30,23 @@
     "moment": "^2.23.0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
     "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-eslint": "^10.0.1",
+    "babel-preset-es2015": "^6.24.1",
+    "element-ui": "^2.4.11",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "highlight.js": "^9.13.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.5.17",
+    "vuex": "^3.0.1",
+    "webpack-cli": "^3.2.1",
+    "xxmi-util": "^1.0.16"
   }
 }

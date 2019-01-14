@@ -45,51 +45,17 @@ const deleteFileList = function (fileList, uid) {
   }
 };
 
-/**
- * vue
- * 清除表单错误信息
- */
-const clearError = function (filed = 'validateError') {
-  if (this.$data && this.$data[filed]) {
-    for (const key in this.$data[filed]) {
-      this.$data[filed][key].message = '';
-    }
-  }
-};
-
-/**
- * 显示错误信息
- * @param code 错误代码
- * @param message 错误消息
- */
-const showError = function (codes = [], filed = 'validateError') {
-  if (this.$data && this.$data[filed]) {
-    const validateError = this.$data[filed];
-    const codeList = _.isArray(codes) ? codes : [{code: codes}];
-    for (const codeItem of codeList.values()) {
-      const {code} = codeItem;
-      for (const [key, value] of Object.entries(validateError)) {
-        if (Object.keys(value).includes(code)) {
-          this.$data[filed][key].message = value[code];
-          break;
-        }
-      }
-    }
-  }
-};
 
 export {
   isNumber,
   isExcel,
   isDoc,
-  deleteFileList,
-  clearError
+  deleteFileList
 };
 
 export default {
   isNumber,
   isExcel,
   isDoc,
-  deleteFileList,
-  clearError
+  deleteFileList
 };

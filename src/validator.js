@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * 验证账号
  * @param rule
@@ -185,6 +187,71 @@ const validateIp = function (rule, val, callback) {
   }
 };
 
+/**
+ * vue
+ * 清除表单错误信息
+ */
+const clearError = function (filed = 'validateError') {
+  if (this.$data && this.$data[filed]) {
+    for (const key in this.$data[filed]) {
+      this.$data[filed][key].message = '';
+    }
+  }
+};
+
+/**
+ * 显示错误信息
+ * @param codes 错误代码
+ * @param filed 验证器错误对象域。默认：validateError
+ * 示例：
+ *
+ * validateError: {
+      account: {
+        'message':'', // 存放消息的字段
+        '60008': '账户名称已存在' // 60008的错误代码的错误提示消息
+      }
+  }
+ *
+ * this.showError('60008');
+ * this.showError([{code:'60008'}]]);
+ */
+const showError = function (codes = [], filed = 'validateError') {
+  if (this.$data && this.$data[filed]) {
+    const validateError = this.$data[filed];
+    const codeList = _.isArray(codes) ? codes : [{code: codes}];
+    for (const codeItem of codeList.values()) {
+      const {code} = codeItem;
+      for (const [key, value] of Object.entries(validateError)) {
+        if (Object.keys(value).includes(code)) {
+          this.$data[filed][key].message = value[code];
+          break;
+        }
+      }
+    }
+  }
+};
+
+/**
+ * 安装到 Vue 的原型
+ * 用时可直接：this.validate.account
+ * @param Vue
+ */
+const install = function (Vue) {
+  Vue.prototype.validate = {
+    account: validateAccount,
+    password: validatePassword,
+    phone: validatePhone,
+    phoneCode: validatePhoneCode,
+    number: validateNumber,
+    letterNumber: validateLetterNumber,
+    letterNumberChinese: validateLetterNumberChinese,
+    underlineLetterNumberChinese: validateUnderlineLetterNumberChinese,
+    identityCard: validateIdentityCard,
+    ip: validateIp
+  };
+  Vue.prototype.clearError = clearError;
+  Vue.prototype.showError = showError;
+};
 
 export {
   validateAccount,
@@ -196,18 +263,12 @@ export {
   validateLetterNumberChinese,
   validateUnderlineLetterNumberChinese,
   validateIdentityCard,
-  validateIp
+  validateIp,
+  clearError,
+  showError,
+  install
 };
 
-export default {
-  validateAccount,
-  validatePassword,
-  validatePhone,
-  validatePhoneCode,
-  validateNumber,
-  validateLetterNumber,
-  validateLetterNumberChinese,
-  validateUnderlineLetterNumberChinese,
-  validateIdentityCard,
-  validateIp
+export default function (Vue) {
+  install(Vue);
 };
