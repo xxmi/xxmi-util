@@ -127,9 +127,9 @@ async function rotateImage (file) {
     }
 
     const base64 = await loadFile(file);
-    const img = await loadImg(base64);
-    let width = img.naturalWidth; // 宽
-    let height = img.naturalHeight; // 高
+    const image = await loadImg(base64);
+    let width = image.naturalWidth; // 宽
+    let height = image.naturalHeight; // 高
     let degree = 90 * Math.PI / 180;
 
     const canvas = document.createElement('canvas');
@@ -138,22 +138,22 @@ async function rotateImage (file) {
     const ctx = canvas.getContext('2d');
     switch (orientation) {
       case 1: // 不旋转
-        ctx.drawImage(img, 0, 0, width, height);
+        ctx.drawImage(image, 0, 0, width, height);
         break;
       case 6: // 需要顺时针（向左）90度旋转
         ctx.rotate(degree);
-        ctx.drawImage(img, 0, -height, width, height);
+        ctx.drawImage(image, 0, -height, width, height);
         break;
       case 8: // 需要逆时针（向右）90度旋转
         ctx.rotate(degree * 3);
-        ctx.drawImage(img, -height, 0, height, width);
+        ctx.drawImage(image, -height, 0, height, width);
         break;
       case 3: // 需要180度旋转
         ctx.rotate(degree * 2);
-        ctx.drawImage(img, -width, -height, width, height);
+        ctx.drawImage(image, -width, -height, width, height);
         break;
       default:
-        ctx.drawImage(img, 0, 0, width, height);
+        ctx.drawImage(image, 0, 0, width, height);
         break;
     }
     canvas.toBlob((blob) => {
