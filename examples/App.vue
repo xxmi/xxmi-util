@@ -1,7 +1,8 @@
 <template>
     <section id="app">
         <section class="menu-wrap">
-            <router-link to="/demo-form">表单</router-link>
+            <router-link to="/demo-form">1.表单</router-link>
+            <router-link to="/upload-image">2.上传图片（解决图片被旋转问题）</router-link>
         </section>
         <router-view/>
     </section>
@@ -44,5 +45,9 @@
         padding: 20px;
         margin-bottom: 20px;
         border: 1px solid red;
+
+        > a {
+            margin-right: 20px;
+        }
     }
 </style>

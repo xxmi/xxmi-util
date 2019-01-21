@@ -17,6 +17,10 @@ export default new VueRouter({
       component: () => import('component/demo-form.vue')
     },
     {
+      path: '/upload-image',
+      component: () => import('component/upload-image/index.vue')
+    },
+    {
       path: '*', redirect: '/'
     }
   ]
