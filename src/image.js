@@ -122,6 +122,9 @@ async function loadImg (base64) {
 async function rotateImage (file) {
   return await new Promise(async (resolve, reject) => {
     const orientation = await getImageOrientation(file);
+    if (orientation === 1) {
+      return resolve(file);
+    }
 
     const base64 = await loadFile(file);
     const img = await loadImg(base64);
@@ -133,34 +136,30 @@ async function rotateImage (file) {
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d');
-    if (orientation) {
-      switch (orientation) {
-        case 1: // 不旋转
-          ctx.drawImage(img, 0, 0, width, height);
-          break;
-        case 6: // 需要顺时针（向左）90度旋转
-          ctx.rotate(degree);
-          ctx.drawImage(img, 0, -height, width, height);
-          break;
-        case 8: // 需要逆时针（向右）90度旋转
-          ctx.rotate(degree * 3);
-          ctx.drawImage(img, -height, 0, height, width);
-          break;
-        case 3: // 需要180度旋转
-          ctx.rotate(degree * 2);
-          ctx.drawImage(img, -width, -height, width, height);
-          break;
-        default:
-          ctx.drawImage(img, 0, 0, width, height);
-          break;
-      }
-    } else {
-      ctx.drawImage(img, 0, 0, width, height);
+    switch (orientation) {
+      case 1: // 不旋转
+        ctx.drawImage(img, 0, 0, width, height);
+        break;
+      case 6: // 需要顺时针（向左）90度旋转
+        ctx.rotate(degree);
+        ctx.drawImage(img, 0, -height, width, height);
+        break;
+      case 8: // 需要逆时针（向右）90度旋转
+        ctx.rotate(degree * 3);
+        ctx.drawImage(img, -height, 0, height, width);
+        break;
+      case 3: // 需要180度旋转
+        ctx.rotate(degree * 2);
+        ctx.drawImage(img, -width, -height, width, height);
+        break;
+      default:
+        ctx.drawImage(img, 0, 0, width, height);
+        break;
     }
     canvas.toBlob((blob) => {
       blob.name = file.name;
       resolve(blob);
-    }, file.type ? file.type : 'image/jpeg');
+    }, file.type ? file.type : 'image/jpeg', 0.5);
   });
 }
 
