@@ -44,12 +44,12 @@
     methods: {
       change (val) {
         const img = document.getElementById('myImage');
-        const {deg, x, y, width, height} = JSON.parse(val);
+        const {deg, x, y} = JSON.parse(val);
         const myCanvas = document.getElementById('myCanvas');
         const ctx = myCanvas.getContext('2d');
         let degree = 90 * Math.PI / 180;
         if (deg >= 1) {
-          ctx.rotate(degree * deg);
+          ctx.rotate(degree * deg); // 旋转是画布旋转了
         }
         // 注意：旋转是以0,0为中心点
         // 在画布上定位图像，并规定图像的宽度和高度：
