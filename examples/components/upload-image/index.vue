@@ -29,11 +29,17 @@
             <img src="/upload-image/v1001.png" alt="">
         </div>
         <hr>
+        <div>
+            <p>v1002.jpg处理后的效果</p>
+            <img src="/upload-image/v1003.jpg" width="100" height="100" alt="">
+        </div>
+        <hr>
         <div class="preview-solve">
             <p>
-                2个解决方案: <br>
+                3个解决方案: <br>
                 （一）. 通过JS获取 .jpg 的 Orientation 属性，设置元素旋转 (这种方式不好，元素会随着旋转，布局就乱了)<br>
                 （二）. 把图片转换为 .png 格式
+                （三）. 通过 canvas 绘画此图
             </p>
             <div class="bg1001">1001.jpg 1：0°</div>
             <div class="bg1002">1002.jpg 6：90°</div>
@@ -42,15 +48,16 @@
         </div>
         <hr>
         <div>
-            <p>上传图片，并如果有旋转则旋转</p>
+            <p>上传图片，如果有旋转则旋转（通过 canvas 从新绘画）</p>
             <img :src="uploadImageSrc" width="200" height="200">
-            <input type="file" @change="uploadImage">
+            <input id="uploadFile" type="file" @change="uploadImage">
         </div>
     </section>
 </template>
 
 <script>
   import ImageUtil from '../../../src/image';
+  import downloadFile from 'downloadjs';
 
   export default {
     name: 'UploadImage',
@@ -60,13 +67,12 @@
       };
     },
     async created () {
-      // const result1 = await ImageUtil.getImageOrientation('/upload-image/1001.jpg');
-      // const result2 = await ImageUtil.getImageOrientation('/upload-image/1002.jpg');
-      // const result3 = await ImageUtil.getImageOrientation('/upload-image/1003.jpg');
-      // const result4 = await ImageUtil.getImageOrientation('/upload-image/1004.jpg');
-      // const v1002 = await ImageUtil.getImageOrientation('/upload-image/v1002.jpg');
-      // console.log(result1, result2, result3, result4);
-      // console.log(v1002);
+      const result1 = await ImageUtil.getImageOrientation('/upload-image/1001.jpg');
+      const result2 = await ImageUtil.getImageOrientation('/upload-image/1002.jpg');
+      const result3 = await ImageUtil.getImageOrientation('/upload-image/1003.jpg');
+      const result4 = await ImageUtil.getImageOrientation('/upload-image/1004.jpg');
+      const v1002 = await ImageUtil.getImageOrientation('/upload-image/v1002.jpg');
+      console.log(result1, result2, result3, result4, v1002);
     },
     methods: {
       async uploadImage (e) {
@@ -77,7 +83,7 @@
           console.log(file);
           const blob = await ImageUtil.rotateImage(file);
           console.log('blob', blob);
-
+          downloadFile(blob, blob.name, blob.type);
           const reader = new FileReader();
           reader.readAsDataURL(blob);
           reader.onload = function (e) {
@@ -85,6 +91,7 @@
             _this.uploadImageSrc = src;
           };
         }
+        document.getElementById('uploadFile').value = '';
       }
     }
   };

@@ -1,6 +1,7 @@
 import _ from 'lodash';
 // https://github.com/exif-js/exif-js
 import Exif from 'exif-js';
+import he from 'element-ui/src/locale/lang/he';
 
 const IMAGE_TYPE = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png', '.png', '.jpg'];
 
@@ -133,26 +134,40 @@ async function rotateImage (file) {
     let degree = 90 * Math.PI / 180;
 
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
     const ctx = canvas.getContext('2d');
+
+    // {deg: 0, x: 0, y: 0, width: 217, height: 369},
+    // {deg: 1, x: 0, y: -369, width: 369, height: 217},
+    // {deg: 2, x: -217, y: -369, width: 217, height: 369},
+    // {deg: 3, x: -217, y: 0, width: 369, height: 217}
+
     switch (orientation) {
       case 1: // 不旋转
+        canvas.width = width;
+        canvas.height = height;
         ctx.drawImage(image, 0, 0, width, height);
         break;
-      case 6: // 需要顺时针（向左）90度旋转
+      case 6: // 需要顺时针（向右）90度旋转
+        canvas.width = height;
+        canvas.height = width;
         ctx.rotate(degree);
         ctx.drawImage(image, 0, -height, width, height);
         break;
-      case 8: // 需要逆时针（向右）90度旋转
-        ctx.rotate(degree * 3);
-        ctx.drawImage(image, -height, 0, height, width);
-        break;
       case 3: // 需要180度旋转
+        canvas.width = width;
+        canvas.height = height;
         ctx.rotate(degree * 2);
         ctx.drawImage(image, -width, -height, width, height);
         break;
+      case 8: // 需要逆时针（向左）90度旋转
+        canvas.width = height;
+        canvas.height = width;
+        ctx.rotate(degree * 3);
+        ctx.drawImage(image, -width, 0, width, height);
+        break;
       default:
+        canvas.width = width;
+        canvas.height = height;
         ctx.drawImage(image, 0, 0, width, height);
         break;
     }

@@ -21,6 +21,10 @@ export default new VueRouter({
       component: () => import('component/upload-image/index.vue')
     },
     {
+      path: '/canvas',
+      component: () => import('component/canvas/index.vue')
+    },
+    {
       path: '*', redirect: '/'
     }
   ]
