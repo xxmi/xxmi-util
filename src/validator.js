@@ -115,6 +115,34 @@ const validateUnderlineLetterNumberChinese = function (rule, val, callback) {
 };
 
 /**
+ * 验证只能输入：中文、英文、-、_
+ * @param rule
+ * @param val
+ * @param callback
+ */
+const validateChineseLetterHrUnderline = function (rule, val, callback) {
+  if (/^[\-_A-Za-z\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入：中文、英文、-、_'));
+  }
+};
+
+/**
+ * 验证只能输入：中英文、横线和空格,需以中英文开头和结尾
+ * @param rule
+ * @param val
+ * @param callback
+ */
+const validateChineseLetterHrSpace = function (rule, val, callback) {
+  if (/^[A-Za-z\u4e00-\u9fa5]+[\-\sA-Za-z\u4e00-\u9fa5]*[A-Za-z\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入：中英文、横线和空格,需以中英文开头和结尾'));
+  }
+};
+
+/**
  * 验证身份证号码
  * @param rule
  * @param value
@@ -246,6 +274,8 @@ const install = function (Vue) {
     letterNumber: validateLetterNumber,
     letterNumberChinese: validateLetterNumberChinese,
     underlineLetterNumberChinese: validateUnderlineLetterNumberChinese,
+    chineseLetterHrUnderline: validateChineseLetterHrUnderline,
+    chineseLetterHrSpace: validateChineseLetterHrSpace,
     identityCard: validateIdentityCard,
     ip: validateIp
   };
@@ -262,6 +292,8 @@ export {
   validateLetterNumber,
   validateLetterNumberChinese,
   validateUnderlineLetterNumberChinese,
+  validateChineseLetterHrUnderline,
+  validateChineseLetterHrSpace,
   validateIdentityCard,
   validateIp,
   clearError,
