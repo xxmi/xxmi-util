@@ -11,6 +11,7 @@ module.exports = {
     datetime: resolve('../src/datetime.js'),
     image: resolve('../src/image.js'),
     tool: resolve('../src/tool.js'),
+    util: resolve('../src/util.js'),
     validator: resolve('../src/validator.js')
   },
   output: {

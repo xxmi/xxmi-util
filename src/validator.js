@@ -115,6 +115,20 @@ const validateUnderlineLetterNumberChinese = function (rule, val, callback) {
 };
 
 /**
+ * 验证只能输入：中英文、数字、-、_
+ * @param rule
+ * @param val
+ * @param callback
+ */
+const validateChineseLetterNumberHrUnderline = function (rule, val, callback) {
+  if (/^[\-_A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入：中英文、数字、-、_'));
+  }
+};
+
+/**
  * 验证只能输入：中文、英文、-、_
  * @param rule
  * @param val
@@ -274,6 +288,7 @@ const install = function (Vue) {
     letterNumber: validateLetterNumber,
     letterNumberChinese: validateLetterNumberChinese,
     underlineLetterNumberChinese: validateUnderlineLetterNumberChinese,
+    chineseLetterNumberHrUnderline: validateChineseLetterNumberHrUnderline,
     chineseLetterHrUnderline: validateChineseLetterHrUnderline,
     chineseLetterHrSpace: validateChineseLetterHrSpace,
     identityCard: validateIdentityCard,
@@ -292,6 +307,7 @@ export {
   validateLetterNumber,
   validateLetterNumberChinese,
   validateUnderlineLetterNumberChinese,
+  validateChineseLetterNumberHrUnderline,
   validateChineseLetterHrUnderline,
   validateChineseLetterHrSpace,
   validateIdentityCard,
