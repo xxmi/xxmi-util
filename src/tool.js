@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * 验证是纯数字
  * @param val
@@ -5,6 +7,15 @@
  */
 const isNumber = function (val) {
     return /^[\d]+$/.test(val);
+};
+
+/**
+ * 整数或者小数
+ * @param val
+ * @returns {boolean}
+ */
+const isIntegerOrDecimal = function (val) {
+    return /^([\d]+|([1-9]\d*|\d)\.\d*[1-9])$/.test(val);
 };
 
 
@@ -84,6 +95,7 @@ const flashChecker = function () {
 
 export {
     isNumber,
+    isIntegerOrDecimal,
     isExcel,
     isDoc,
     deleteFileList,
@@ -92,6 +104,7 @@ export {
 
 export default {
     isNumber,
+    isIntegerOrDecimal,
     isExcel,
     isDoc,
     deleteFileList,
