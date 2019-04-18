@@ -1,6 +1,6 @@
 const path = require('path');
 
-function resolve (url) {
+function resolve(url) {
   return path.resolve(path.join(__dirname, url));
 }
 
@@ -12,11 +12,12 @@ module.exports = {
     image: resolve('../src/image.js'),
     tool: resolve('../src/tool.js'),
     util: resolve('../src/util.js'),
-    validator: resolve('../src/validator.js')
+    validator: resolve('../src/validator.js'),
+    route: resolve('../src/route.js'),
   },
   output: {
     filename: '[name].js',
     path: path.resolve(path.join(__dirname, '../lib')),
-    libraryTarget: 'this' // 打包为前后端通用模块
-  }
+    libraryTarget: 'this', // 打包为前后端通用模块
+  },
 };

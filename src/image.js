@@ -1,7 +1,6 @@
 import _ from 'lodash';
 // https://github.com/exif-js/exif-js
 import Exif from 'exif-js';
-import he from 'element-ui/src/locale/lang/he';
 
 const IMAGE_TYPE = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png', '.png', '.jpg'];
 
@@ -10,7 +9,7 @@ const IMAGE_TYPE = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png', '.png',
  * @param imgType 图片类型
  * @return {boolean|*} true:是；false:否
  */
-function isImage (imgType) {
+function isImage(imgType) {
   return _.includes(IMAGE_TYPE, imgType);
 }
 
@@ -27,8 +26,8 @@ function isImage (imgType) {
  * 逆时针90°   8
  *
  */
-async function getImageOrientation (url) {
-  return await new Promise((resolve, reject) => {
+async function getImageOrientation(url) {
+  return await new Promise(resolve => {
 
     const getOrientation = (image) => {
       Exif.getData(image, function () {
@@ -58,7 +57,7 @@ async function getImageOrientation (url) {
  * @param url 图片地址
  * @return {Promise<number>}
  */
-async function getImageRotateDeg (url) {
+async function getImageRotateDeg(url) {
   const orientation = await getImageOrientation(url);
   let deg = 0;
   switch (orientation) {
@@ -83,7 +82,7 @@ async function getImageRotateDeg (url) {
  * @param file 上传的图片文件
  * @return {Promise<any>} 返回 base64的图片
  */
-async function loadFile (file) {
+async function loadFile(file) {
   let fileReader = new FileReader();
   fileReader.readAsDataURL(file);
   return await new Promise((resolve, reject) => {
@@ -101,7 +100,7 @@ async function loadFile (file) {
  * @param src 路径
  * @return {Promise<any>} Image
  */
-async function loadImg (base64) {
+async function loadImg(base64) {
   const img = new Image();
   img.setAttribute('crossOrigin', 'anonymous');
   img.src = base64; // 可设置为：路径 或者 base64的图片
@@ -120,8 +119,8 @@ async function loadImg (base64) {
  * @param file 上传的文件
  * @return {Promise<any>}
  */
-async function rotateImage (file) {
-  return await new Promise(async (resolve, reject) => {
+async function rotateImage(file) {
+  return await new Promise(async resolve => {
     const orientation = await getImageOrientation(file);
     if (orientation === 1) {
       return resolve(file);
@@ -183,11 +182,11 @@ export {
   isImage,
   getImageOrientation,
   getImageRotateDeg,
-  rotateImage
+  rotateImage,
 };
 export default {
   isImage,
   getImageOrientation,
   getImageRotateDeg,
-  rotateImage
+  rotateImage,
 };

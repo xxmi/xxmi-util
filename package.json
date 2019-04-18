@@ -4,12 +4,12 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf lib",
     "build-lib": "webpack --config build/webpack.config.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target examples-lib --name xxmi-util-demo --dest examples-lib src/index.js"
+    "lib": "vue-cli-service build --target lib --name xxmi-util --dest lib src/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,9 +29,11 @@
     "downloadjs": "^1.4.7",
     "exif-js": "^2.3.0",
     "lodash": "^4.17.11",
-    "moment": "^2.23.0"
+    "moment": "^2.23.0",
+    "qs": "^6.7.0"
   },
   "devDependencies": {
+    "rimraf": "^2.6.3",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
