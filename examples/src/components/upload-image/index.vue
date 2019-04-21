@@ -56,7 +56,7 @@
 </template>
 
 <script>
-  import ImageUtil from '../../../src/image';
+  import ImageUtil from '../../../../src/image';
   import downloadFile from 'downloadjs';
 
   export default {
@@ -121,28 +121,28 @@
             border: 1px solid black;
 
             &.bg1001 {
-                background: url("../../../public/upload-image/1001.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1001.jpg") no-repeat;
                 background-size: 124px;
             }
 
             &.bg1002 {
-                background: url("../../../public/upload-image/1002.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1002.jpg") no-repeat;
                 background-size: 124px;
                 /*transform: rotate(90deg);*/
             }
 
             &.bg1003 {
-                background: url("../../../public/upload-image/1003.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1003.jpg") no-repeat;
                 background-size: 124px;
             }
 
             &.bg1004 {
-                background: url("../../../public/upload-image/1004.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1004.jpg") no-repeat;
                 background-size: 124px;
             }
 
             &.v1002 {
-                background: url("../../../public/upload-image/v1002.jpg") no-repeat;
+                background: url("../../../../public/upload-image/v1002.jpg") no-repeat;
                 background-size: 124px;
                 /*transform: rotate(90deg);*/
             }
@@ -166,27 +166,27 @@
             border: 1px solid black;
 
             &.bg1001 {
-                background: url("../../../public/upload-image/1001.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1001.jpg") no-repeat;
                 background-size: 124px;
                 transform: rotate(0deg);
             }
 
             &.bg1002 {
                 margin: 0 80px;
-                background: url("../../../public/upload-image/1002.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1002.jpg") no-repeat;
                 background-size: 124px;
                 transform: rotate(90deg);
             }
 
             &.bg1003 {
-                background: url("../../../public/upload-image/1003.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1003.jpg") no-repeat;
                 background-size: 124px;
                 transform: rotate(180deg);
             }
 
             &.bg1004 {
                 margin: 0 80px;
-                background: url("../../../public/upload-image/1004.jpg") no-repeat;
+                background: url("../../../../public/upload-image/1004.jpg") no-repeat;
                 background-size: 124px;
                 transform: rotate(-90deg);
             }

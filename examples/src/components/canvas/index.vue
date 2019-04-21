@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img id="myImage" src="./images/original2.png"
+        <img id="myImage" src="images/original2.png"
              class="image">
         <canvas id="myCanvas" class="canvas" :width="list[currIndex].width" :height="list[currIndex].height">
             Your browser does not support the HTML5 canvas tag.
