@@ -22,15 +22,8 @@
     "lib",
     "src"
   ],
-  "peerDependencies": {
-    "lodash": "^4.17.11",
-    "moment": "^2.23.0"
-  },
   "dependencies": {
-    "downloadjs": "^1.4.7",
-    "exif-js": "^2.3.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.23.0"
+    "exif-js": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
