@@ -1,5 +1,4 @@
-import _ from 'lodash';
-import {isIntegerOrDecimal} from './tool';
+import { isIntegerOrDecimal } from './tool';
 
 /**
  * 验证账号
@@ -8,11 +7,11 @@ import {isIntegerOrDecimal} from './tool';
  * @param callback
  */
 const validateAccount = function (rule, val, callback) {
-    if (/^[a-zA-Z][a-zA-Z0-9_]{4,17}$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('5~18个字符，可使用大小写字母、数字、下划线，需以字母开头'));
-    }
+  if (/^[a-zA-Z][a-zA-Z0-9_]{4,17}$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('5~18个字符，可使用大小写字母、数字、下划线，需以字母开头'));
+  }
 };
 
 
@@ -23,11 +22,11 @@ const validateAccount = function (rule, val, callback) {
  * @param callback
  */
 const validatePassword = function (rule, val, callback) {
-    if (/^[a-zA-Z0-9]{6,30}$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('6~30个字符，可使用大小写字母、数字'));
-    }
+  if (/^[a-zA-Z0-9]{6,30}$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('6~30个字符，可使用大小写字母、数字'));
+  }
 };
 
 
@@ -38,11 +37,11 @@ const validatePassword = function (rule, val, callback) {
  * @param callback
  */
 const validatePhone = function (rule, val, callback) {
-    if (/^1[0-9]{10}$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('请输入如正确的手机号码'));
-    }
+  if (/^1[0-9]{10}$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('请输入如正确的手机号码'));
+  }
 };
 
 /**
@@ -52,11 +51,11 @@ const validatePhone = function (rule, val, callback) {
  * @param callback
  */
 const validatePhoneCode = function (rule, val, callback) {
-    if (/^\d{,6}$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('请输入6个数字的验证码'));
-    }
+  if (/^\d{,6}$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('请输入6个数字的验证码'));
+  }
 };
 
 /**
@@ -66,11 +65,11 @@ const validatePhoneCode = function (rule, val, callback) {
  * @param callback
  */
 const validateNumber = function (rule, val, callback) {
-    if (/^[0-9]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入数字'));
-    }
+  if (/^[0-9]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入数字'));
+  }
 };
 
 /**
@@ -80,11 +79,11 @@ const validateNumber = function (rule, val, callback) {
  * @param callback
  */
 const validateIntegerOrDecimal = function (rule, val, callback) {
-    if (isIntegerOrDecimal(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入整数或者小数'));
-    }
+  if (isIntegerOrDecimal(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入整数或者小数'));
+  }
 };
 
 
@@ -95,11 +94,11 @@ const validateIntegerOrDecimal = function (rule, val, callback) {
  * @param callback
  */
 const validateLetterNumber = function (rule, val, callback) {
-    if (/^[A-Za-z0-9]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入字母、数字'));
-    }
+  if (/^[A-Za-z0-9]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入字母、数字'));
+  }
 };
 
 /**
@@ -109,11 +108,11 @@ const validateLetterNumber = function (rule, val, callback) {
  * @param callback
  */
 const validateLetterNumberChinese = function (rule, val, callback) {
-    if (/^[A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入字母、数字、中文'));
-    }
+  if (/^[A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入字母、数字、中文'));
+  }
 };
 
 /**
@@ -123,11 +122,11 @@ const validateLetterNumberChinese = function (rule, val, callback) {
  * @param callback
  */
 const validateUnderlineLetterNumberChinese = function (rule, val, callback) {
-    if (/^[_A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入_、字母、数字、中文'));
-    }
+  if (/^[_A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入_、字母、数字、中文'));
+  }
 };
 
 /**
@@ -137,11 +136,11 @@ const validateUnderlineLetterNumberChinese = function (rule, val, callback) {
  * @param callback
  */
 const validateChineseLetterNumberHrUnderline = function (rule, val, callback) {
-    if (/^[-_A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入：中英文、数字、-、_'));
-    }
+  if (/^[-_A-Za-z0-9\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入：中英文、数字、-、_'));
+  }
 };
 
 /**
@@ -151,11 +150,11 @@ const validateChineseLetterNumberHrUnderline = function (rule, val, callback) {
  * @param callback
  */
 const validateChineseLetterHrUnderline = function (rule, val, callback) {
-    if (/^[-_A-Za-z\u4e00-\u9fa5]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入：中文、英文、-、_'));
-    }
+  if (/^[-_A-Za-z\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入：中文、英文、-、_'));
+  }
 };
 
 /**
@@ -165,11 +164,11 @@ const validateChineseLetterHrUnderline = function (rule, val, callback) {
  * @param callback
  */
 const validateChineseLetterHrSpace = function (rule, val, callback) {
-    if (/^[A-Za-z\u4e00-\u9fa5]+[-\sA-Za-z\u4e00-\u9fa5]*[A-Za-z\u4e00-\u9fa5]+$/.test(val)) {
-        callback();
-    } else {
-        callback(new Error('只能输入：中英文、横线和空格,需以中英文开头和结尾'));
-    }
+  if (/^[A-Za-z\u4e00-\u9fa5]+[-\sA-Za-z\u4e00-\u9fa5]*[A-Za-z\u4e00-\u9fa5]+$/.test(val)) {
+    callback();
+  } else {
+    callback(new Error('只能输入：中英文、横线和空格,需以中英文开头和结尾'));
+  }
 };
 
 /**
@@ -180,13 +179,13 @@ const validateChineseLetterHrSpace = function (rule, val, callback) {
  * @return {*}
  */
 const validateIdentityCard = function (rule, value, callback) {
-    if (value === '') {
-        return callback();
-    }
-    if (!/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(value)) {
-        return callback(new Error('格式错误'));
-    }
-    callback();
+  if (value === '') {
+    return callback();
+  }
+  if (!/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(value)) {
+    return callback(new Error('格式错误'));
+  }
+  callback();
 };
 
 
@@ -211,24 +210,24 @@ const IPV6_COMPRESS_REGEX_BORDER = /^(::(?:[0-9A-Fa-f]{1,4})(?::[0-9A-Fa-f]{1,4}
 
 //判断是否为合法IPv4地址
 const isIPv4Address = function (val) {
-    return IPV4_REGEX.test(val);
+  return IPV4_REGEX.test(val);
 };
 
 //判断是否为合法IPv6地址
 const isIPv6Address = function (val) {
-    let NUM = 0;
-    for (let i = 0; i < val.length; i++) {
-        if (val.charAt(i) == ':') NUM++;
-    }
-    if (NUM > 7) return false;
-    if (IPV6_STD_REGEX.test(val)) {
-        return true;
-    }
-    if (NUM == 7) {
-        return IPV6_COMPRESS_REGEX_BORDER.test(val);
-    } else {
-        return IPV6_COMPRESS_REGEX.test(val);
-    }
+  let NUM = 0;
+  for (let i = 0; i < val.length; i++) {
+    if (val.charAt(i) == ':') NUM++;
+  }
+  if (NUM > 7) return false;
+  if (IPV6_STD_REGEX.test(val)) {
+    return true;
+  }
+  if (NUM == 7) {
+    return IPV6_COMPRESS_REGEX_BORDER.test(val);
+  } else {
+    return IPV6_COMPRESS_REGEX.test(val);
+  }
 };
 
 /**
@@ -238,11 +237,11 @@ const isIPv6Address = function (val) {
  * @param callback
  */
 const validateIp = function (rule, val, callback) {
-    if (isIPv4Address(val) || isIPv6Address(val)) {
-        callback();
-    } else {
-        callback(new Error('请输入正确的IP地址'));
-    }
+  if (isIPv4Address(val) || isIPv6Address(val)) {
+    callback();
+  } else {
+    callback(new Error('请输入正确的IP地址'));
+  }
 };
 
 /**
@@ -250,11 +249,11 @@ const validateIp = function (rule, val, callback) {
  * 清除表单错误信息
  */
 const clearError = function (filed = 'validateError') {
-    if (this.$data && this.$data[filed]) {
-        for (const key in this.$data[filed]) {
-            this.$data[filed][key].message = '';
-        }
+  if (this.$data && this.$data[filed]) {
+    for (const key in this.$data[filed]) {
+      this.$data[filed][key].message = '';
     }
+  }
 };
 
 /**
@@ -274,19 +273,19 @@ const clearError = function (filed = 'validateError') {
  * this.showError([{code:'60008'}]]);
  */
 const showError = function (codes = [], filed = 'validateError') {
-    if (this.$data && this.$data[filed]) {
-        const validateError = this.$data[filed];
-        const codeList = _.isArray(codes) ? codes : [{code: codes}];
-        for (const codeItem of codeList.values()) {
-            const {code} = codeItem;
-            for (const [key, value] of Object.entries(validateError)) {
-                if (Object.keys(value).includes(code)) {
-                    this.$data[filed][key].message = value[code];
-                    break;
-                }
-            }
+  if (this.$data && this.$data[filed]) {
+    const validateError = this.$data[filed];
+    const codeList = Array.isArray(codes) ? codes : [{ code: codes }];
+    for (const codeItem of codeList.values()) {
+      const { code } = codeItem;
+      for (const [key, value] of Object.entries(validateError)) {
+        if (Object.keys(value).includes(code)) {
+          this.$data[filed][key].message = value[code];
+          break;
         }
+      }
     }
+  }
 };
 
 /**
@@ -295,46 +294,46 @@ const showError = function (codes = [], filed = 'validateError') {
  * @param Vue
  */
 const install = function (Vue) {
-    Vue.prototype.validate = {
-        account: validateAccount,
-        password: validatePassword,
-        phone: validatePhone,
-        phoneCode: validatePhoneCode,
-        number: validateNumber,
-        integerOrDecimal: validateIntegerOrDecimal,
-        letterNumber: validateLetterNumber,
-        letterNumberChinese: validateLetterNumberChinese,
-        underlineLetterNumberChinese: validateUnderlineLetterNumberChinese,
-        chineseLetterNumberHrUnderline: validateChineseLetterNumberHrUnderline,
-        chineseLetterHrUnderline: validateChineseLetterHrUnderline,
-        chineseLetterHrSpace: validateChineseLetterHrSpace,
-        identityCard: validateIdentityCard,
-        ip: validateIp
-    };
-    Vue.prototype.clearError = clearError;
-    Vue.prototype.showError = showError;
+  Vue.prototype.validate = {
+    account: validateAccount,
+    password: validatePassword,
+    phone: validatePhone,
+    phoneCode: validatePhoneCode,
+    number: validateNumber,
+    integerOrDecimal: validateIntegerOrDecimal,
+    letterNumber: validateLetterNumber,
+    letterNumberChinese: validateLetterNumberChinese,
+    underlineLetterNumberChinese: validateUnderlineLetterNumberChinese,
+    chineseLetterNumberHrUnderline: validateChineseLetterNumberHrUnderline,
+    chineseLetterHrUnderline: validateChineseLetterHrUnderline,
+    chineseLetterHrSpace: validateChineseLetterHrSpace,
+    identityCard: validateIdentityCard,
+    ip: validateIp,
+  };
+  Vue.prototype.clearError = clearError;
+  Vue.prototype.showError = showError;
 };
 
 export {
-    validateAccount,
-    validatePassword,
-    validatePhone,
-    validatePhoneCode,
-    validateNumber,
-    validateIntegerOrDecimal,
-    validateLetterNumber,
-    validateLetterNumberChinese,
-    validateUnderlineLetterNumberChinese,
-    validateChineseLetterNumberHrUnderline,
-    validateChineseLetterHrUnderline,
-    validateChineseLetterHrSpace,
-    validateIdentityCard,
-    validateIp,
-    clearError,
-    showError,
-    install
+  validateAccount,
+  validatePassword,
+  validatePhone,
+  validatePhoneCode,
+  validateNumber,
+  validateIntegerOrDecimal,
+  validateLetterNumber,
+  validateLetterNumberChinese,
+  validateUnderlineLetterNumberChinese,
+  validateChineseLetterNumberHrUnderline,
+  validateChineseLetterHrUnderline,
+  validateChineseLetterHrSpace,
+  validateIdentityCard,
+  validateIp,
+  clearError,
+  showError,
+  install,
 };
 
 export default function (Vue) {
-    install(Vue);
+  install(Vue);
 }

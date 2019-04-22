@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /**
  * 扩展属性
  * @param targetObj 目标对象（目标对象会被修改）
@@ -36,7 +34,7 @@ const _extendProperty = function (targetObj, property = {}, extend = {}) {
  * @return {*}
  */
 const extendProperty = function (targetObj, property = {}, extend = {}) {
-  if (_.isArray(targetObj)) {
+  if (Array.isArray(targetObj)) {
     for (let i = 0, l = targetObj.length; i < l; i++) {
       targetObj[i] = _extendProperty(targetObj[i], property, extend);
     }
@@ -53,7 +51,7 @@ const extendProperty = function (targetObj, property = {}, extend = {}) {
  * @returns {*}
  */
 const deleteProperty = function (obj, deleteProperty = []) {
-  const _deleteProperty = _.isArray(deleteProperty) ? deleteProperty : [deleteProperty];
+  const _deleteProperty = Array.isArray(deleteProperty) ? deleteProperty : [deleteProperty];
   for (let i = 0; i < _deleteProperty.length; i++) {
     const key = _deleteProperty[i];
     delete obj[key];
@@ -69,7 +67,7 @@ const deleteProperty = function (obj, deleteProperty = []) {
  */
 const deleteEmptyProperty = function (obj, deletePropertyList = []) {
   for (const key in obj) {
-    if (obj[key] === 'undefined' || obj[key] === null || obj[key] === '' || (_.isArray(obj[key]) && obj[key].length === 0)) {
+    if (obj[key] === 'undefined' || obj[key] === null || obj[key] === '' || (Array.isArray(obj[key]) && obj[key].length === 0)) {
       delete obj[key];
     }
   }
@@ -91,7 +89,7 @@ const parseTree = function (settings = {
   childKey: 'children'
 }, nodes = [], property = {}, extend = {}) {
   const {key, parentKey, childKey} = settings;
-  if (!_.isArray(nodes)) {
+  if (!Array.isArray(nodes)) {
     return [nodes];
   }
   const menuNodes = [];

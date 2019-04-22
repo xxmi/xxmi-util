@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import includes from 'lodash/includes';
 
 /**
  * 验证是纯数字
@@ -26,7 +26,7 @@ const isIntegerOrDecimal = function (val) {
  */
 const isExcel = function (type) {
   const EXCEL = ['.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
-  return _.includes(EXCEL, type);
+  return includes(EXCEL, type);
 };
 
 /**
@@ -38,7 +38,7 @@ const isDoc = function (name = '', type = '') {
   const DOC = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
   const DOC_SUFFIX = ['.doc', '.docx'];
   const suffix = name.substr(name.lastIndexOf('.'));
-  return _.includes(DOC_SUFFIX, suffix) || _.includes(DOC, type);
+  return includes(DOC_SUFFIX, suffix) || includes(DOC, type);
 };
 
 /**

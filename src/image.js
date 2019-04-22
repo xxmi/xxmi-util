@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import includes from 'lodash/includes';
 // https://github.com/exif-js/exif-js
 import Exif from 'exif-js';
 
@@ -10,7 +10,7 @@ const IMAGE_TYPE = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png', '.png',
  * @return {boolean|*} true:是；false:否
  */
 function isImage(imgType) {
-  return _.includes(IMAGE_TYPE, imgType);
+  return includes(IMAGE_TYPE, imgType);
 }
 
 

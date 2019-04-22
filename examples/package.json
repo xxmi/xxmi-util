@@ -4,8 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "node scripts/build.js"
+    "serve": "vue-cli-service serve"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,8 @@
     "downloadjs": "^1.4.7",
     "exif-js": "^2.3.0",
     "lodash": "^4.17.11",
-    "moment": "^2.23.0"
+    "moment": "^2.23.0",
+    "xxmi-util": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.5",
@@ -53,7 +53,20 @@
     "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.5.17",
     "vuex": "^3.0.1",
-    "webpack-cli": "^3.2.1",
-    "zlib": "^1.0.5"
+    "webpack-cli": "^3.2.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   }
 }

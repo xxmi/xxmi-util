@@ -14,6 +14,7 @@ const build = {
   'tool': resolve('src/tool.js'),
   'util': resolve('src/util.js'),
   'validator': resolve('src/validator.js'),
+  'route': resolve('src/route.js'),
 };
 
 const builds = {};
@@ -59,7 +60,12 @@ function genConfig(name) {
   const opts = builds[name];
   const config = {
     input: opts.entry,
-    external: ['lodash', 'moment'].concat(opts.external),
+    external: [].concat(opts.external),
+    // external: id => {
+    //   if (/moment/.test(id)) {
+    //     console.log('exteranl::::', id);
+    //   }
+    // },
     plugins: [node(), cjs()].concat(opts.plugins || []),
     output: {
       file: opts.dest,
