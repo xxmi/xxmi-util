@@ -30,6 +30,18 @@ const isExcel = function (type) {
 };
 
 /**
+ * 是否为 excel
+ * @param name
+ * @param type
+ * @returns {boolean}
+ */
+const isExcelFull = function (name = '', type = '') {
+  const SUFFIX = ['.xlsx', '.xls'];
+  const suffix = name.substr(name.lastIndexOf('.'));
+  return includes(SUFFIX, suffix) || isExcel(type);
+};
+
+/**
  * 判断是 doc 文档
  * @param type
  * @return {*}
@@ -106,6 +118,7 @@ export {
   isNumber,
   isIntegerOrDecimal,
   isExcel,
+  isExcelFull,
   isDoc,
   isEmpty,
   deleteFileList,
@@ -116,6 +129,7 @@ export default {
   isNumber,
   isIntegerOrDecimal,
   isExcel,
+  isExcelFull,
   isDoc,
   isEmpty,
   deleteFileList,
