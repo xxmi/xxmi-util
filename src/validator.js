@@ -1,4 +1,4 @@
-import { isIntegerOrDecimal } from './tool';
+import { isEmpty, isIntegerOrDecimal } from './tool';
 
 /**
  * 验证账号
@@ -79,7 +79,7 @@ const validateNumber = function (rule, val, callback) {
  * @param callback
  */
 const validateIntegerOrDecimal = function (rule, val, callback) {
-  if (isIntegerOrDecimal(val)) {
+  if (isEmpty(val) || isIntegerOrDecimal(val)) {
     callback();
   } else {
     callback(new Error('只能输入整数或者小数'));
