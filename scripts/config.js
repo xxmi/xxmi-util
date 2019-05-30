@@ -16,6 +16,7 @@ const build = {
   'validator': resolve('src/validator.js'),
   'route': resolve('src/route.js'),
   'date-util': resolve('src/date-util.js'),
+  'captcha': resolve('src/captcha.js'),
 };
 
 const builds = {};
