@@ -117,10 +117,3 @@ export {
   deleteEmptyProperty,
   parseTree
 };
-
-export default {
-  extendProperty,
-  deleteProperty,
-  deleteEmptyProperty,
-  parseTree
-};

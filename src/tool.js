@@ -1,5 +1,45 @@
 import includes from 'lodash/includes';
 
+const getDataType = function (val) {
+  const str = Object.prototype.toString.call(val);
+  return str.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
+const DataType = function () {
+};
+
+Object.assign(DataType, {
+  getType(val) {
+    return getDataType(val);
+  },
+  isObject(val) {
+    return getDataType(val) === 'object';
+  },
+  isArray(val) {
+    return getDataType(val) === 'array';
+  },
+  isString(val) {
+    return getDataType(val) === 'string';
+  },
+  isNumber(val) {
+    return getDataType(val) === 'number';
+  },
+  isBoolean(val) {
+    return getDataType(val) === 'boolean';
+  },
+  isUndefined(val) {
+    return getDataType(val) === 'undefined';
+  },
+  isNull(val) {
+    return getDataType(val) === 'null';
+  },
+  isMath(val) {
+    return getDataType(val) === 'math';
+  },
+  isFunction(val) {
+    return getDataType(val) === 'function';
+  },
+});
+
 /**
  * 验证是纯数字
  * @param val
@@ -115,17 +155,8 @@ const flashChecker = function () {
 
 
 export {
-  isNumber,
-  isIntegerOrDecimal,
-  isExcel,
-  isExcelFull,
-  isDoc,
-  isEmpty,
-  deleteFileList,
-  flashChecker,
-};
-
-export default {
+  getDataType,
+  DataType,
   isNumber,
   isIntegerOrDecimal,
   isExcel,

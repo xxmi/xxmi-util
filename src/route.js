@@ -36,6 +36,3 @@ function query() {
 export {
   query,
 };
-export default {
-  query,
-};

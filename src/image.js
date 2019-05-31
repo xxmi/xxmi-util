@@ -184,9 +184,3 @@ export {
   getImageRotateDeg,
   rotateImage,
 };
-export default {
-  isImage,
-  getImageOrientation,
-  getImageRotateDeg,
-  rotateImage,
-};

@@ -27,7 +27,3 @@ const timestampFormat = function (val) {
 export {
   timestampFormat,
 };
-
-export default {
-  timestampFormat,
-};
