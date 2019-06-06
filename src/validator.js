@@ -245,6 +245,20 @@ const validateIp = function (rule, val, callback) {
 };
 
 /**
+ * 验证前后空格
+ * @param rule
+ * @param val
+ * @param callback
+ */
+const validatePreAndAfterSpace = function (rule, val, callback) {
+  if (/^\s+|\s+$/g.test(val)) {
+    callback(new Error('前后不能输入空格'));
+  } else {
+    callback();
+  }
+};
+
+/**
  * vue
  * 清除表单错误信息
  */
@@ -288,6 +302,10 @@ const showError = function (codes = [], filed = 'validateError') {
   }
 };
 
+
+let custom = {};
+
+
 /**
  * 安装到 Vue 的原型
  * 用时可直接：this.validate.account
@@ -309,7 +327,9 @@ const install = function (Vue) {
     chineseLetterHrSpace: validateChineseLetterHrSpace,
     identityCard: validateIdentityCard,
     ip: validateIp,
+    preAndAfterSpace: validatePreAndAfterSpace,
   };
+  Object.assign(Vue.prototype.validate, custom);
   Vue.prototype.clearError = clearError;
   Vue.prototype.showError = showError;
 };
@@ -334,6 +354,11 @@ export {
   install,
 };
 
-export default function (Vue) {
+const Validator = function (Vue) {
   install(Vue);
-}
+};
+Validator.push = function (args) {
+  custom = Object.assign(custom, args);
+};
+
+export default Validator;
