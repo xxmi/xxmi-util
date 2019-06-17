@@ -131,10 +131,8 @@ class Captcha { // 创建一个图形验证码对象，接收options对象为参
     const v_code = this.options.code.toLowerCase();
     if (code == v_code) {
       return true;
-    } else {
-      this.refresh();
-      return false;
     }
+    return false;
   }
 }
 
