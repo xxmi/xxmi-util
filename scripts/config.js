@@ -17,6 +17,7 @@ const build = {
   'route': resolve('src/route.js'),
   'date-util': resolve('src/date-util.js'),
   'captcha': resolve('src/captcha.js'),
+  'me-player': resolve('src/me-player.js'),
 };
 
 const builds = {};
