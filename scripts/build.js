@@ -9,7 +9,6 @@ if (!fs.existsSync('lib')) {
 }
 
 let builds = require('./config').getAllBuilds();
-
 build(builds);
 
 function build(builds) {
@@ -31,23 +30,23 @@ function buildEntry(config) {
   const { file, banner } = output;
   const isProd = /(min|prod)\.js$/.test(file);
   return rollup.rollup(config)
-               .then(bundle => bundle.generate(output))
-               .then(({ output: [{ code }] }) => {
-                 if (isProd) {
-                   const minified = (banner ? banner + '\n' : '') + terser.minify(code, {
-                     toplevel: true,
-                     output: {
-                       ascii_only: true,
-                     },
-                     compress: {
-                       pure_funcs: ['makeMap'],
-                     },
-                   }).code;
-                   return write(file, minified, true);
-                 } else {
-                   return write(file, code);
-                 }
-               });
+    .then(bundle => bundle.generate(output))
+    .then(({ output: [{ code }] }) => {
+      if (isProd) {
+        const minified = (banner ? banner + '\n' : '') + terser.minify(code, {
+          toplevel: true,
+          output: {
+            ascii_only: true,
+          },
+          compress: {
+            pure_funcs: ['makeMap'],
+          },
+        }).code;
+        return write(file, minified, true);
+      } else {
+        return write(file, code);
+      }
+    });
 }
 
 function write(dest, code, zip) {

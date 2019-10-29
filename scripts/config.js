@@ -63,7 +63,7 @@ function genConfig(name) {
   const opts = builds[name];
   const config = {
     input: opts.entry,
-    external: [].concat(opts.external),
+    external: ['Aliplayer'].concat(opts.external),
     // external: id => {
     //   if (/moment/.test(id)) {
     //     console.log('exteranl::::', id);
@@ -75,6 +75,9 @@ function genConfig(name) {
       format: opts.format,
       banner: opts.banner,
       name: opts.moduleName || 'XxmiUtil',
+      globals: {
+        Aliplayer: "Aliplayer",
+      },
     },
     onwarn: (msg, warn) => {
       if (!/Circular/.test(msg)) {
