@@ -72,7 +72,7 @@ class MePlayer {
     let readyHandler = () => {
       successErrorCount++;
       if (successErrorCount < list.length) return;
-      if (this.leader.duration <= 0) return;
+      if (!this.leader || this.leader.duration <= 0) return;
       this.config.ready = true;
       this.emit('ready', this.config);
       this.emit('init', this.config);
