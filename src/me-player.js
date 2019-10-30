@@ -15,7 +15,7 @@ class MePlayer {
     }
     this.config = assign({
       autoplay: false, // 自动播放
-      step: 5, // 步长;默认：10 秒
+      step: 10, // 步长;默认：10 秒
       allowSetSpeed: [0.5, 1, 1.25, 1.5, 2], // 允许的倍速值；可选值：0.5, 1, 1.25, 1.5, 2（倍速还可以放大到10倍以上，但没意义眼睛都不过来了）
       setSpeed: 1, // 倍速播放
       ready: false, // 准备状态；true：已准备好；false:为准备好
@@ -76,6 +76,7 @@ class MePlayer {
       this.config.ready = true;
       this.emit('ready', this.config);
       this.emit('init', this.config);
+      this.emit('state', this.config);
       if (this.config.autoplay) {
         this.play();
         this.emit('play', this.config);
@@ -140,12 +141,13 @@ class MePlayer {
    * @param flag
    */
   monitor(flag = true) {
-    clearInterval(this.interval);
+    clearTimeout(this.interval);
     if (!flag) return;
-    this.interval = setInterval(() => {
+
+    let ex = () => {
       let { currentTime, duration } = this.config;
       if (currentTime === duration) {
-        clearInterval(this.interval);
+        clearTimeout(this.interval);
       }
       let leaderDuration = this.leader.duration;
       let leaderCurrTime = this.leader.player.getCurrentTime(); // 领导者播放位置
@@ -175,14 +177,17 @@ class MePlayer {
           player.seek(item.currentTime);
         }
       }
+      this.emit('monitor', this.config);
       if (leaderCurrTime >= leaderDuration) {
-        clearInterval(this.interval);
+        clearTimeout(this.interval);
         this.config.state = 3;
         this.emit('complete', this.config);
+        this.emit('state', this.config);
+      } else {
+        setTimeout(ex, 500);
       }
-      this.emit('monitor', this.config);
-    }, 500);
-
+    };
+    ex();
   }
 
   /**
@@ -215,6 +220,7 @@ class MePlayer {
 
     this.monitor(true);
     this.config.state = 1;
+    this.emit('state', this.config);
   }
 
   /**
@@ -227,6 +233,7 @@ class MePlayer {
       item.player.pause();
     }
     this.config.state = 2;
+    this.emit('state', this.config);
   }
 
   /**
@@ -285,6 +292,17 @@ class MePlayer {
     this.config.setSpeed = val;
     for (let item of Object.values(this.availableMap)) {
       item.player.setSpeed(val); // 设置播放倍速
+    }
+  }
+
+  /**
+   * 销毁播放器
+   */
+  dispose() {
+    this.config.ready = false;
+    clearTimeout(this.interval);
+    for (let item of Object.values(this.instanceMap)) {
+      item.player.dispose(); // 销毁
     }
   }
 }
