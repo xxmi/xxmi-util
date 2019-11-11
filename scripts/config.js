@@ -17,7 +17,6 @@ const build = {
   'route': resolve('src/route.js'),
   'date-util': resolve('src/date-util.js'),
   'captcha': resolve('src/captcha.js'),
-  'me-player': resolve('src/me-player.js'),
 };
 
 const builds = {};
@@ -63,7 +62,7 @@ function genConfig(name) {
   const opts = builds[name];
   const config = {
     input: opts.entry,
-    external: ['Aliplayer'].concat(opts.external),
+    external: [].concat(opts.external),
     // external: id => {
     //   if (/moment/.test(id)) {
     //     console.log('exteranl::::', id);
@@ -75,9 +74,7 @@ function genConfig(name) {
       format: opts.format,
       banner: opts.banner,
       name: opts.moduleName || 'XxmiUtil',
-      globals: {
-        Aliplayer: "Aliplayer",
-      },
+      globals: {},
     },
     onwarn: (msg, warn) => {
       if (!/Circular/.test(msg)) {
