@@ -55,7 +55,7 @@ const isNumber = function (val) {
  * @returns {boolean}
  */
 const isIntegerOrDecimal = function (val) {
-  return /^(-[1-9]\d*|\d+|-?([1-9]\d*|\d)\.\d*[1-9])$/.test(val);
+  return /^(-[1-9]\d*|[\d]|[1-9]\d*|-?([1-9]\d*|\d)\.\d+)$/.test(val);
 };
 
 
