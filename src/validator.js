@@ -40,7 +40,7 @@ const validatePhone = function (rule, val, callback) {
   if (/^1[0-9]{10}$/.test(val)) {
     callback();
   } else {
-    callback(new Error('请输入如正确的手机号码'));
+    callback(new Error('请输入正确的手机号码'));
   }
 };
 
