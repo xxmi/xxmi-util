@@ -1,4 +1,4 @@
-import { isEmpty, isIntegerOrDecimal } from './tool';
+import { isEmpty, isIntegerOrDecimal, DataType } from './tool';
 
 /**
  * 验证账号
@@ -302,6 +302,21 @@ const showError = function (codes = [], filed = 'validateError') {
   }
 };
 
+/**
+ * 处理错误消息
+ * 以 data 里面的优先级最高，其次在是 message
+ * @param code
+ * @param data
+ * @param message
+ * @returns {string|*}
+ */
+const handlerErrorMessage = ({ code, data = [], message = '' }) => {
+  if (code === '200' || DataType.isUndefined(data)) return message || '';
+  return (DataType.isObject(data) ? [data] : data).reduce((messageList, item, itemIndex) => {
+    messageList.push(`<div class="validator-handler-error-message" style="padding: 5px 0;">${itemIndex + 1}. ${item.message || ''}</div>`);
+    return messageList;
+  }, []).join('');
+};
 
 let custom = {};
 
@@ -332,6 +347,7 @@ const install = function (Vue) {
   Object.assign(Vue.prototype.validate, custom);
   Vue.prototype.clearError = clearError;
   Vue.prototype.showError = showError;
+  Vue.prototype.handlerErrorMessage = handlerErrorMessage;
 };
 
 export {
