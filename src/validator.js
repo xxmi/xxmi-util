@@ -311,7 +311,9 @@ const showError = function (codes = [], filed = 'validateError') {
  */
 const handlerErrorMessage = ({ data = [], message = '' }) => {
   if (DataType.isUndefined(data)) return message || '';
-  return (DataType.isObject(data) ? [data] : data).reduce((messageList, item, itemIndex) => {
+  let arr = (DataType.isObject(data) ? [data] : data);
+  if (arr.length <= 0) return message || '';
+  return arr.reduce((messageList, item, itemIndex) => {
     messageList.push(`<div class="validator-handler-error-message" style="padding: 5px 0;">${itemIndex + 1}. ${item.message || ''}</div>`);
     return messageList;
   }, []).join('');

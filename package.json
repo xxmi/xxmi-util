@@ -1,12 +1,14 @@
 {
   "name": "xxmi-util",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "",
   "main": "lib/index.umd.min.js",
   "module": "lib/index.min.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && node scripts/build.js"
+    "build": "npm run clean && node scripts/build.js",
+    "_login": "npm login --registry https://registry.npmjs.com",
+    "_publish": "npm publish --registry https://registry.npmjs.com"
   },
   "repository": {
     "type": "git",
