@@ -2,6 +2,9 @@
 
 ## 修改记录
 
+###  V2.3.5
+> 1. 修改 validator.js 新增 handlerErrorMessage 处理错误消息
+
 ###  V2.3.4
 > 1. 修改 validator.js 新增 handlerErrorMessage 处理错误消息
 

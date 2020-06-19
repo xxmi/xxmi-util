@@ -311,6 +311,7 @@ const showError = function (codes = [], filed = 'validateError') {
  */
 const handlerErrorMessage = ({ data = [], message = '' }) => {
   if (DataType.isUndefined(data)) return message || '';
+  if (DataType.isString(data)) return data || message || '';
   let arr = (DataType.isObject(data) ? [data] : data);
   if (arr.length <= 0) return message || '';
   return arr.reduce((messageList, item, itemIndex) => {
